@@ -23,14 +23,11 @@ jobs:
         shell: bash
         run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
         id: extract_branch
-      
-      - name: test
-        run: echo "$GITHUB_REPOSITORY:${{ steps.extract_branch.outputs.branch }}"
 
-      # - name: Build and push
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: .
-      #     push: true
-      #     tags: |
-      #       ${{ GITHUB_REPOSITORY }}:${{ steps.extract_branch.outputs.branch }}
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: |
+            ${{ GITHUB_REPOSITORY }}:${{ steps.extract_branch.outputs.branch }}
