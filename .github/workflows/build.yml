@@ -30,4 +30,4 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ GITHUB_REPOSITORY }}:${{ steps.extract_branch.outputs.branch }}
+            $GITHUB_REPOSITORY:${{ steps.extract_branch.outputs.branch }}
